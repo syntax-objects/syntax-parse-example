@@ -40,14 +40,18 @@
 (define (make-example-src! dir name)
   (displayln* (path-replace-extension (build-path dir name) #".rkt")
     "#lang racket/base"
+    (format "(provide ~a)" name)
     "(require (for-syntax racket/base syntax/parse))"
     ""
-    "#;(TODO fill in here)"))
+    (format "(define-syntax (~a stx)" name)
+    (format "  (syntax-parse stx")
+    (format "   [x x])) ;; TODO fill in here")))
+
 
 (define (make-example-doc! dir name)
   (displayln* (path-replace-extension (build-path dir name) #".scrbl")
     "#lang scribble/manual"
-    (format "@require[(for-label racket/base syntax/parse syntax-parse-examples/~a/~a.rkt" name name)
+    (format "@require[(for-label racket/base syntax/parse syntax-parse-examples/~a/~a)]" name name)
     ""
     (format "@title{~a}" name)
     ""
@@ -55,12 +59,13 @@
     ))
 
 (define (make-example-test! dir name)
-  (displayln* (path-replace-extension (build-path dir name) #".test")
+  (displayln* (path-replace-extension (build-path dir (string-append name "-test")) #".rkt")
     "#lang racket/base"
     "(module+ test"
-    (format "  (require rackunit syntax-parse-examples/~a/~a.rkt)" name name)
+    (format "  (require rackunit syntax-parse-examples/~a/~a)" name name)
     ""
-    "#;(TODO add tests here)"))
+    "#;(TODO add tests here)"
+    ")"))
 
 ;; =============================================================================
 
