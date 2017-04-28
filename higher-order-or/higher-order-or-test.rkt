@@ -7,6 +7,10 @@
     1)
 
   (check-equal?
+    (higher-order-or 'done (let loop-forever () (loop-forever)))
+    'done)
+
+  (check-equal?
     (string-length
       (with-output-to-string
         (λ ()
