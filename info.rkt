@@ -2,7 +2,7 @@
 (define collection "syntax-parse-examples")
 (define deps '("base"))
 (define build-deps '("scribble-lib" "racket-doc"))
-(define pkg-desc "Example macros written with syntax/parse")
+(define pkg-desc "Examples of syntax/parse")
 (define version "0.0")
 (define pkg-authors '(ben))
 (define scribblings '(("syntax-parse-examples.scrbl" () ("Examples"))))
