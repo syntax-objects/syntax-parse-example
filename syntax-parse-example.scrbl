@@ -3,14 +3,14 @@
   (for-label
     racket/base
     syntax/parse
-    syntax-parse-examples/first-class-or/first-class-or)
+    syntax-parse-example/first-class-or/first-class-or)
 ]
-@(define GITHUB-URL "https://github.com/bennn/syntax-parse-examples")
+@(define GITHUB-URL "https://github.com/bennn/syntax-parse-example")
 
 @title{Syntax Parse Examples}
 Source code: @url[GITHUB-URL]
 
-@defmodule[syntax-parse-examples]{
+@defmodule[syntax-parse-example]{
   This package is a collection of useful and/or illustrative macros written
   using the @racketmodname[syntax/parse] library.
 }
@@ -42,8 +42,8 @@ Three options, ordered from best to worst.
   new file normally.
 }
 @item{@(let ([example-macro-name @tt{first-class-or}]
-             [example-macro-modname @racketmodname[syntax-parse-examples/first-class-or/first-class-or]]) @list{
-  Install the @racketmodname[syntax-parse-examples] package, then require
+             [example-macro-modname @racketmodname[syntax-parse-example/first-class-or/first-class-or]]) @list{
+  Install the @racketmodname[syntax-parse-example] package, then require
   the macro's defining module.
   For example, the defining module for the @|example-macro-name| macro is
   @|example-macro-modname|.
@@ -64,7 +64,7 @@ To create an example named @tt[example-macro-name]:
   Clone this repository (@hyperlink[GITHUB-URL]{link}).
 }
 @item{
-  Run @exec{raco syntax-parse-examples --new @|example-macro-name|} in the
+  Run @exec{raco syntax-parse-example --new @|example-macro-name|} in the
   top-level folder of the cloned repository.
   This generates three new files:
   @itemlist[
@@ -88,7 +88,7 @@ To create an example named @tt[example-macro-name]:
   Add the macro to @filepath{index.scrbl}.
 }
 @item{
-  Run @exec{raco setup syntax-parse-examples} to generate the documentation.
+  Run @exec{raco setup syntax-parse-example} to generate the documentation.
 }
 ]
 

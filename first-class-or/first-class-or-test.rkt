@@ -1,6 +1,6 @@
 #lang racket/base
 (module+ test
-  (require rackunit syntax-parse-examples/first-class-or/first-class-or racket/port)
+  (require rackunit syntax-parse-example/first-class-or/first-class-or racket/port)
 
   (check-equal?
     (first-class-or 1 2 3)

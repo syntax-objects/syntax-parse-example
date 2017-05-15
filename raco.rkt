@@ -1,7 +1,7 @@
 #lang racket/base
 
 ;; Configuration / back-end tools.
-;; - defines the `syntax-parse-examples` raco command
+;; - defines the `syntax-parse-example` raco command
 ;; - ???
 
 ;; For now the philosophy is "keep things straight-line, avoid making functions
@@ -12,7 +12,7 @@
 
 (define-runtime-path SPE-HOME ".")
 
-(define SPE 'syntax-parse-examples)
+(define SPE 'syntax-parse-example)
 
 ;; =============================================================================
 
@@ -50,12 +50,12 @@
 
 (define (make-example-doc! dir name)
   (displayln* (path-replace-extension (build-path dir name) #".scrbl")
-    "#lang syntax-parse-examples"
+    "#lang syntax-parse-example"
     "@require["
-    (format "  (for-label racket/base syntax/parse syntax-parse-examples/~a/~a)]" name name)
+    (format "  (for-label racket/base syntax/parse syntax-parse-example/~a/~a)]" name name)
     ""
     (format "@(define ~a-eval" name)
-    (format "   (make-base-eval '(require syntax-parse-examples/~a/~a)))" name name)
+    (format "   (make-base-eval '(require syntax-parse-example/~a/~a)))" name name)
     ""
     (format "@title{@tt{~a}}" name)
     ""
@@ -77,7 +77,7 @@
   (displayln* (path-replace-extension (build-path dir (string-append name "-test")) #".rkt")
     "#lang racket/base"
     "(module+ test"
-    (format "  (require rackunit syntax-parse-examples/~a/~a)" name name)
+    (format "  (require rackunit syntax-parse-example/~a/~a)" name name)
     ""
     "#;(TODO add tests here)"
     ")"))

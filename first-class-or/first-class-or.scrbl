@@ -1,13 +1,13 @@
-#lang syntax-parse-examples
+#lang syntax-parse-example
 @require[
   (for-label
     racket/base
     syntax/parse
-    syntax-parse-examples/first-class-or/first-class-or)]
+    syntax-parse-example/first-class-or/first-class-or)]
 
 @(define first-class-or-eval
    (make-base-eval
-     '(require syntax-parse-examples/first-class-or/first-class-or)))
+     '(require syntax-parse-example/first-class-or/first-class-or)))
 
 @title{@tt{first-class-or}}
 @; =============================================================================
@@ -56,6 +56,6 @@ Some comments:
 }
 ]
 
-See @racketmodname[syntax-parse-examples/first-class-or/first-class-or-test]
+See @racketmodname[syntax-parse-example/first-class-or/first-class-or-test]
  for more examples.
 
