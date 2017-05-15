@@ -57,7 +57,6 @@
     (quasisyntax/loc stx
       (typeset-code
         #:context (syntax #,an-stx)
-        #:line-numbers 1
         (quote str*) ...))]))
 
 (define (tech/guide . text)

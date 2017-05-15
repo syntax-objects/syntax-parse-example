@@ -17,10 +17,6 @@ Source code: @url[GITHUB-URL]
 
 
 @; =============================================================================
-@include-section{index.scrbl}
-
-
-@; =============================================================================
 @section{How to browse the examples}
 
 Two options:
@@ -84,8 +80,21 @@ To create an example named @tt[example-macro-name]:
   ]
 }
 @item{
-  TODO coming soon
+  Fill the holes in the newly-generated files with an implementation,
+   some unit tests,
+   and documentation.
+}
+@item{
+  Add the macro to @filepath{index.scrbl}.
+}
+@item{
+  Run @exec{raco setup syntax-parse-examples} to generate the documentation.
 }
 ]
 
 })
+
+@; =============================================================================
+@include-section{index.scrbl}
+
+

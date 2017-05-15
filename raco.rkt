@@ -52,12 +52,25 @@
   (displayln* (path-replace-extension (build-path dir name) #".scrbl")
     "#lang syntax-parse-examples"
     "@require["
-    "  scribble/example"
     (format "  (for-label racket/base syntax/parse syntax-parse-examples/~a/~a)]" name name)
+    ""
+    (format "@(define ~a-eval" name)
+    (format "   (make-base-eval '(require syntax-parse-examples/~a/~a)))" name name)
     ""
     (format "@title{@tt{~a}}" name)
     ""
-    "" #;(TODO put the code here!)
+    "@; ============================================================================="
+    ""
+    "@; TODO add intro text here"
+    ""
+    (format "@examples[#:eval ~a-eval" name)
+    " @; TODO add examples here"
+    "]"
+    ""
+    (format "@racketfile{~a/~a.rkt}" name name)
+    ""
+    "@; TODO add description here"
+    ""
     ))
 
 (define (make-example-test! dir name)
