@@ -12,8 +12,8 @@
                    (format "file '~a' does not exist, cannot render example"
                            (syntax-e #'scrbl-path-str))
      (syntax/loc stx
-         (include-section scrbl-path-str))]))
+       (include-section scrbl-path-str))]))
 
 @; =============================================================================
 
-@include-example{higher-order-or}
+@include-example{first-class-or}

@@ -1,14 +1,14 @@
 #lang racket/base
-(provide higher-order-or)
+(provide first-class-or)
 (require (for-syntax racket/base syntax/parse))
 
-(define-syntax (higher-order-or stx)
+(define-syntax (first-class-or stx)
   (syntax-parse stx
    [(_)
     #'#false]
    [(_ a . b)
     #'(let ([a-val a])
-        (if a-val a-val (higher-order-or . b)))]
+        (if a-val a-val (first-class-or . b)))]
    [_:id
     #'(lambda arg*
         (let loop ([arg* arg*])

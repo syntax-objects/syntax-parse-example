@@ -50,10 +50,12 @@
 
 (define (make-example-doc! dir name)
   (displayln* (path-replace-extension (build-path dir name) #".scrbl")
-    "#lang scribble/manual"
-    (format "@require[(for-label racket/base syntax/parse syntax-parse-examples/~a/~a)]" name name)
+    "#lang syntax-parse-examples"
+    "@require["
+    "  scribble/example"
+    (format "  (for-label racket/base syntax/parse syntax-parse-examples/~a/~a)]" name name)
     ""
-    (format "@title{~a}" name)
+    (format "@title{@tt{~a}}" name)
     ""
     "" #;(TODO put the code here!)
     ))

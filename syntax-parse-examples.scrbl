@@ -2,7 +2,8 @@
 @require[
   (for-label
     racket/base
-    syntax/parse)
+    syntax/parse
+    syntax-parse-examples/first-class-or/first-class-or)
 ]
 @(define GITHUB-URL "https://github.com/bennn/syntax-parse-examples")
 
@@ -15,11 +16,11 @@ Source code: @url[GITHUB-URL]
 }
 
 
-@section{The Examples}
-
+@; =============================================================================
 @include-section{index.scrbl}
 
 
+@; =============================================================================
 @section{How to browse the examples}
 
 Two options:
@@ -44,8 +45,8 @@ Three options, ordered from best to worst.
   Copy/paste the example code into a new file in your project, require that
   new file normally.
 }
-@item{@(let ([example-macro-name @tt{erasable-debug}]
-             [example-macro-modname @racketmodname[syntax-parse-examples/erasable-debug]]) @list{
+@item{@(let ([example-macro-name @tt{first-class-or}]
+             [example-macro-modname @racketmodname[syntax-parse-examples/first-class-or/first-class-or]]) @list{
   Install the @racketmodname[syntax-parse-examples] package, then require
   the macro's defining module.
   For example, the defining module for the @|example-macro-name| macro is

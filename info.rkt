@@ -6,4 +6,4 @@
 (define version "0.0")
 (define pkg-authors '(ben))
 (define scribblings '(("syntax-parse-examples.scrbl" () ("Examples"))))
-(define raco-commands '(("syntax-parse-examples" (submod syntax-parse-examples/main main) "macro-management" #f)))
+(define raco-commands '(("syntax-parse-examples" (submod syntax-parse-examples/raco main) "macro-management" #f)))
