@@ -6,9 +6,9 @@
   (syntax-parse stx
    [(_)
     #'#false]
-   [(_ a . b)
-    #'(let ([a-val a])
-        (if a-val a-val (first-class-or . b)))]
+   [(_ ?a . ?b)
+    #'(let ([a-val ?a])
+        (if a-val a-val (first-class-or . ?b)))]
    [_:id
     #'(lambda arg*
         (let loop ([arg* arg*])
