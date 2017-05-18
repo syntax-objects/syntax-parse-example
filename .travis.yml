@@ -14,6 +14,6 @@ before_install:
 install: raco pkg install --deps search-auto $TRAVIS_BUILD_DIR
 
 script:
- - raco test $TRAVIS_BUILD_DIR
+ - raco test -c syntax-parse-example
  - raco setup --check-pkg-deps syntax-parse-example
 
