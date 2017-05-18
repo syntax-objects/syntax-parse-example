@@ -18,6 +18,7 @@
 
     (define lang-dir? (make-directory-name=? "lang"))
     (define compiled-dir? (make-directory-name=? "compiled"))
+    (define doc-dir? (make-directory-name=? "doc"))
 
     (define (filter/rx rx v*)
       (filter (λ (v) (regexp-match? rx v)) v*))
@@ -31,6 +32,8 @@
         (check-true (and (= 1 (length lang-file*))
                          (equal? (path->string (file-name-from-path (car lang-file*)))
                                  "reader.rkt")))]
+       [(doc-dir? d)
+        (void)]
        [else
         (define file* (for/list ([ps (in-glob (build-path d "*.*"))])
                         (path->string (file-name-from-path ps))))
