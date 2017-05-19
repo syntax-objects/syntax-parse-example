@@ -67,7 +67,7 @@
     " @; TODO add examples here"
     "]"
     ""
-    (format "@racketfile{~a/~a.rkt}" name name)
+    (format "@racketfile{~a.rkt}" name)
     ""
     "@; TODO add description here"
     ""

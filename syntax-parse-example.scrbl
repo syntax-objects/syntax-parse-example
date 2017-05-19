@@ -2,6 +2,7 @@
 @require[
   (for-label
     racket/base
+    scribble/manual
     syntax/parse
     syntax-parse-example/first-class-or/first-class-or)
 ]
@@ -10,9 +11,11 @@
 @title{Syntax Parse Examples}
 Source code: @url[GITHUB-URL]
 
-@defmodule[syntax-parse-example]{
+@defmodulelang[syntax-parse-example]{
   This package is a collection of useful and/or illustrative macros written
   using the @racketmodname[syntax/parse] library.
+
+  @Secref{sec:reference} documents the @racketmodname[syntax-parse-example] language.
 }
 
 
@@ -96,5 +99,33 @@ To create an example named @tt[example-macro-name]:
 
 @; =============================================================================
 @include-section{index.scrbl}
+@; =============================================================================
 
+@section[#:tag "sec:reference"]{Reference}
 
+The @racketmodname[syntax-parse-example] language is a small language for
+ documenting example macros. It:
+@itemlist[
+@item{
+  uses the reader from @racketmodname[scribble/base]; and
+}
+@item{
+  provides a few utility functions, documented below.
+}
+]
+
+@defmodule[syntax-parse-example/render]{
+  Helpers for rendering documentation.
+}
+
+@defproc[(tech/guide [pre-content pre-content?] ...) element?]{
+  Similar to @racket[tech], but links to @other-manual['(lib "scribblings/guide/guide.scrbl")].
+}
+
+@defproc[(tech/reference [pre-content pre-content?] ...) element?]{
+  Similar to @racket[tech], but links to @other-manual['(lib "scribblings/reference/reference.scrbl")].
+}
+
+@defproc[(racketfile [filename path-string?]) element?]{
+  Typesets the contents of the given file as if its contents were wrapped in a @racket[racketblock].
+}

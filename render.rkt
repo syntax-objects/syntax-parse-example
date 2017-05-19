@@ -36,6 +36,7 @@
     racket/runtime-path
     racket/path
     racket/base
+    syntax/location
     syntax/parse
     (only-in racket/file file->list)))
 
@@ -49,12 +50,20 @@
 
 (begin-for-syntax
   (define-runtime-path here "."))
+
 (define-syntax (racketfile stx)
   (syntax-parse stx
    [(_ file-name:str)
     #:with (str* ...)
-           (file->list (let ([fn (syntax-e #'file-name)])
-                         (if (complete-path? fn) fn (build-path (path-only here) fn)))
+           (file->list (let* ([fn (syntax-e #'file-name)]
+                              [dir (syntax-source-directory stx)])
+                         (cond
+                          [(complete-path? fn)
+                           fn]
+                          [dir
+                           (build-path dir fn)]
+                          [else
+                           (raise-argument-error 'racketfile "cannot find source for '~a'" fn)]))
                        (lambda (p)
                          (let ([v (read-line p)])
                            (if (eof-object? v) v (string-append v "\n")))))

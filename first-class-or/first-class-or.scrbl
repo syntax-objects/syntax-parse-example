@@ -43,7 +43,7 @@ In the latter case, the function that @racket[first-class-or] evaluates to
 
 The macro:
 
-@racketfile{first-class-or/first-class-or.rkt}
+@racketfile{first-class-or.rkt}
 
 Some comments:
 @itemlist[
