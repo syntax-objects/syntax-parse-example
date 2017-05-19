@@ -33,6 +33,8 @@
   scribble/example
   scribble/manual
   (for-syntax
+    racket/runtime-path
+    racket/path
     racket/base
     syntax/parse
     (only-in racket/file file->list)))
@@ -45,11 +47,14 @@
     (syntax/loc stx
       (#%module-begin id values () . body))]))
 
+(begin-for-syntax
+  (define-runtime-path here "."))
 (define-syntax (racketfile stx)
   (syntax-parse stx
    [(_ file-name:str)
     #:with (str* ...)
-           (file->list (syntax-e #'file-name)
+           (file->list (let ([fn (syntax-e #'file-name)])
+                         (if (complete-path? fn) fn (build-path (path-only here) fn)))
                        (lambda (p)
                          (let ([v (read-line p)])
                            (if (eof-object? v) v (string-append v "\n")))))
