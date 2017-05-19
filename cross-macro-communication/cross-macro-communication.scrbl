@@ -39,12 +39,12 @@ The following is the source code for @racket[define-for-macros] and @racket[get-
 
 @racketfile{cross-macro-communication.rkt}
 
-In @racket[define-for-macro], the macro simply binds a new
+In @racket[define-for-macros], the macro simply binds a new
 value at compile time using @racket[define-syntax]. In this
-example @racket[define-macro] is mostly synonymous with
+example @racket[define-for-macros] is mostly synonymous with
 @racket[define-syntax], but it demonstrates that the
 @racket[name] could be changed (to say add a question mark
 at the end), and the given expression can be changed. The
-@racket[get-macroed] simply takes the compile time value and
+@racket[get-macroed] form simply takes the compile time value and
 puts it in the run time module. If @racket[name] is used
-outside of a macro then an error is raised.
+outside of a macro then a syntax error is raised.
