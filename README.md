@@ -48,12 +48,11 @@ Contribute
 
 To contribute a macro names `M`:
 
-1. Clone this package (`raco pkg install --clone syntax-parse-example`)
-2. Navigate to the `syntax-parse-example/` folder on your machine
+0. Clone this package (`raco pkg install --clone syntax-parse-example`)
+1. Navigate to the `syntax-parse-example/` folder on your machine
 2. Run `raco syntax-parse-example --new M`
 3. Edit the newly-generated files:
   - `M/M.rkt`
   - `M/M-test.rkt`
   - `M/M.scrbl`
-4. Add `M` to the list of examples in `index.scrbl`
-5. Submit a pull request!
+4. Submit a pull request!

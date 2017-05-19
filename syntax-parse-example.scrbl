@@ -88,9 +88,6 @@ To create an example named @tt[example-macro-name]:
    and documentation.
 }
 @item{
-  Add the macro to @filepath{index.scrbl}.
-}
-@item{
   Run @exec{raco setup syntax-parse-example} to generate the documentation.
 }
 ]

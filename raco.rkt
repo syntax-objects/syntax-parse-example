@@ -21,6 +21,7 @@
   (make-example-src! macro-dir macro-name)
   (make-example-doc! macro-dir macro-name)
   (make-example-test! macro-dir macro-name)
+  (add-to-index! macro-name)
   (void))
 
 ;; make-example-directory! : string? -> path-string?
@@ -81,6 +82,11 @@
     ""
     "#;(TODO add tests here)"
     ")"))
+
+(define (add-to-index! name)
+  (with-output-to-file (build-path SPE-HOME "index.scrbl") #:exists 'append
+    (λ ()
+      (printf "@include-example{~a}~n" name))))
 
 ;; =============================================================================
 
