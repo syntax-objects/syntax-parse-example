@@ -18,3 +18,4 @@
 
 @include-example{first-class-or}
 @include-example{cross-macro-communication}
+@include-example{let-star}
