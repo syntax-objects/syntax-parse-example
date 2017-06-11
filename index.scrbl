@@ -21,3 +21,4 @@
 @include-example{let-star}
 @include-example{def}
 @include-example{conditional-require}
+@include-example{multi-check-true}
