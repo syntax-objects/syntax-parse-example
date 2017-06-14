@@ -1,7 +1,7 @@
 #lang info
 (define collection "syntax-parse-example")
 (define deps '("at-exp-lib" "base" "scribble-lib" "rackunit-lib"))
-(define build-deps '("scribble-lib" "racket-doc" "rackunit-lib" "scribble-doc"))
+(define build-deps '("scribble-lib" "racket-doc" "rackunit-doc" "rackunit-lib" "scribble-doc"))
 (define pkg-desc "Examples of syntax/parse")
 (define version "0.0")
 (define pkg-authors '(ben))
