@@ -5,7 +5,7 @@
 (begin-for-syntax
   (define-syntax-class mod-name
     (pattern _:id)
-    (pattern _:string)))
+    (pattern _:str)))
 
 (define-syntax (conditional-require stx)
   (syntax-parse stx
