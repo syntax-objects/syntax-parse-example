@@ -23,3 +23,4 @@
 @include-example{conditional-require}
 @include-example{multi-check-true}
 @include-example{define-datum-literal-set}
+@include-example{rec-contract}
