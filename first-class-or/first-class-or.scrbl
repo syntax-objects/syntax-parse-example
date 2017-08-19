@@ -56,6 +56,3 @@ Some comments:
 }
 ]
 
-See @racketmodname[syntax-parse-example/first-class-or/first-class-or-test]
- for more examples.
-

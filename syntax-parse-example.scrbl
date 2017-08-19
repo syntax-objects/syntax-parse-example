@@ -45,7 +45,7 @@ Three options, ordered from best to worst.
   new file normally.
 }
 @item{@(let ([example-macro-name @tt{first-class-or}]
-             [example-macro-modname @racketmodname[syntax-parse-example/first-class-or/first-class-or]]) @list{
+             [example-macro-modname @filepath{syntax-parse-example/first-class-or/first-class-or}]) @list{
   Install the @racketmodname[syntax-parse-example] package, then require
   the macro's defining module.
   For example, the defining module for the @|example-macro-name| macro is
