@@ -5,6 +5,8 @@
 (provide
   (except-out
     (all-from-out scribble/doclang scribble/example scribble/manual) #%module-begin)
+  (for-syntax
+    (all-from-out racket/base syntax/parse))
 
   (rename-out [module-begin #%module-begin])
 

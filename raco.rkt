@@ -46,32 +46,36 @@
     ""
     (format "(define-syntax (~a stx)" name)
     (format "  (syntax-parse stx")
-    (format "   [x x])) ;; TODO fill in here")))
+    (format "   [x #'(void)])) ;; TODO fill in here")))
 
 
 (define (make-example-doc! dir name)
+  (define mod-name (format "syntax-parse-example/~a/~a" name name))
   (displayln* (path-replace-extension (build-path dir name) #".scrbl")
     "#lang syntax-parse-example"
     "@require["
-    (format "  (for-label racket/base syntax/parse syntax-parse-example/~a/~a)]" name name)
+    (format "  (for-label racket/base syntax/parse ~a)]" mod-name)
     ""
     (format "@(define ~a-eval" name)
-    (format "   (make-base-eval '(require syntax-parse-example/~a/~a)))" name name)
+    (format "   (make-base-eval '(require ~a)))" mod-name)
     ""
     (format "@title{@tt{~a}}" name)
     ""
     "@; ============================================================================="
     ""
-    "@; TODO add intro text here"
+    (format "@defmodule[~a]{}" mod-name)
     ""
-    (format "@examples[#:eval ~a-eval" name)
-    " @; TODO add examples here"
-    "]"
+    (format "@defform[(~a expr ...)]{" name)
+    "  @; TODO add intro text here"
     ""
-    (format "@racketfile{~a.rkt}" name)
+    (format "  @examples[#:eval ~a-eval" name)
+    "   @; TODO add examples here"
+    "  ]"
     ""
-    "@; TODO add description here"
+    (format "  @racketfile{~a.rkt}" name)
     ""
+    "  @; TODO add description here"
+    "}"
     ))
 
 (define (make-example-test! dir name)
