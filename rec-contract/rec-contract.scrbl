@@ -1,6 +1,6 @@
 #lang syntax-parse-example
 @require[
-  (for-label racket/base syntax/parse syntax-parse-example/rec-contract/rec-contract)]
+  (for-label racket/base syntax/parse racket/contract syntax-parse-example/rec-contract/rec-contract)]
 
 @(define rec-contract-eval
    (make-base-eval '(require racket/contract syntax-parse-example/rec-contract/rec-contract)))
@@ -9,19 +9,22 @@
 
 @; =============================================================================
 
-The @racket[rec/c] macro uses Racket's @racket[recursive-contract] form
- to create anonymous recursive contracts.
+@defmodule[syntax-parse-example/rec-contract/rec-contract]{}
 
-@racketfile{rec-contract.rkt}
+@defform[(rec/c id expr)]{
 
-@examples[#:eval rec-contract-eval
-  (define/contract (deep n)
-    (-> integer? (rec/c t (or/c integer? (list/c t))))
-    (if (zero? n)
-      n
-      (list (deep (- n 1)))))
+  The @racket[rec/c] macro uses Racket's @racket[recursive-contract] form
+   to create anonymous recursive contracts.
 
-  (deep 4)
-]
+  @racketfile{rec-contract.rkt}
 
+  @examples[#:eval rec-contract-eval
+    (define/contract (deep n)
+      (-> integer? (rec/c t (or/c integer? (list/c t))))
+      (if (zero? n)
+        n
+        (list (deep (- n 1)))))
 
+    (deep 4)
+  ]
+}

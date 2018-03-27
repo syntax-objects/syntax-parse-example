@@ -9,26 +9,30 @@
 
 @; =============================================================================
 
-The @tt{multi-check-true} expands into a sequence of @racket[check-true] unit tests.
-For example:
+@defmodule[syntax-parse-example/multi-check-true/multi-check-true]{}
 
-@racketblock[
-  (multi-check-true
-    #true
-    #false
-    (even? 0))]
+@defform[(multi-check-true expr ...)]{
 
-expands to code that behaves the same as:
+  The @tt{multi-check-true} expands into a sequence of @racket[check-true] unit tests.
+  For example:
 
-@racketblock[
-  (check-true #true)
-  (check-true #false)
-  (check-true (even? 0))]
+  @racketblock[
+    (multi-check-true
+      #true
+      #false
+      (even? 0))]
 
-The main difference between the macro and the example is that the macro uses
- @racket[with-check-info*] to improve test failure messages.
-If part of a @racket[multi-check-true] fails, the error message points
- to the bad expression (rather than the @racket[multi-check-true] macro).
+  expands to code that behaves the same as:
 
-@racketfile{multi-check-true.rkt}
+  @racketblock[
+    (check-true #true)
+    (check-true #false)
+    (check-true (even? 0))]
 
+  The main difference between the macro and the example is that the macro uses
+   @racket[with-check-info*] to improve test failure messages.
+  If part of a @racket[multi-check-true] fails, the error message points
+   to the bad expression (rather than the @racket[multi-check-true] macro).
+
+  @racketfile{multi-check-true.rkt}
+}

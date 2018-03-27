@@ -9,28 +9,33 @@
 
 @; =============================================================================
 
-@racket[syntax-parse] can match literal symbols using the @racket[#:datum-literals]
- option or the @racket[~datum] pattern form.
-These work well for a small number of literals.
+@defmodule[syntax-parse-example/define-datum-literal-set/define-datum-literal-set]{}
 
-Given a sequence of symbols, the @racket[define-datum-literal-set] macro builds
- a @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{syntax class} that matches these symbols.
+@defform[(define-datum-literal-set id (id ...))]{
 
-@racketblock[
- (define-datum-literal-set C-keyword
-   (auto break case char const continue default do double else))
+  @racket[syntax-parse] can match literal symbols using the @racket[#:datum-literals]
+   option or the @racket[~datum] pattern form.
+  These work well for a small number of literals.
 
- (define-syntax (is-C-keyword? stx)
-   (syntax-parse stx
-    [(_ x:C-keyword)
-     #'#true]
-    [(_ x)
-     #'#false]))
+  Given a sequence of symbols, the @racket[define-datum-literal-set] macro builds
+   a @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{syntax class} that matches these symbols.
 
- (is-C-keyword? else)
- (is-C-keyword? synchronized)
-]
+  @racketblock[
+   (define-datum-literal-set C-keyword
+     (auto break case char const continue default do double else))
 
-The macro works by defining a @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{literal set} and then a @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{syntax class}.
+   (define-syntax (is-C-keyword? stx)
+     (syntax-parse stx
+      [(_ x:C-keyword)
+       #'#true]
+      [(_ x)
+       #'#false]))
 
-@racketfile{define-datum-literal-set.rkt}
+   (is-C-keyword? else)
+   (is-C-keyword? synchronized)
+  ]
+
+  The macro works by defining a @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{literal set} and then a @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{syntax class}.
+
+  @racketfile{define-datum-literal-set.rkt}
+}

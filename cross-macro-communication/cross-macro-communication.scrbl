@@ -10,41 +10,48 @@
 
 @; =============================================================================
 
-The @racket[define-for-macros] and @racket[get-macroed]
-demonstrate the use of @racket[syntax-local-value] when
-communicating information across macros. Anything defined
-with @racket[define-for-macros] can be accessed (at
-compile/macro expansion time) by @racket[get-macroed].
+@defmodule[syntax-parse-example/cross-macro-communication/cross-macro-communication]{}
 
-@examples[#:eval cross-macro-communication-eval
-          (define-for-macros cake 42)
-          (get-macroed cake)
-          (eval:error cake)
-]
+@deftogether[(
+ @defform[(define-for-macros id expr)]
+ @defform[(get-macroed id)]
+)]{
+  The @racket[define-for-macros] and @racket[get-macroed]
+  demonstrate the use of @racket[syntax-local-value] when
+  communicating information across macros. Anything defined
+  with @racket[define-for-macros] can be accessed (at
+  compile/macro expansion time) by @racket[get-macroed].
 
-This communication works even if the identifiers are defined and used in different files or modules:
+  @examples[#:eval cross-macro-communication-eval
+            (define-for-macros cake 42)
+            (get-macroed cake)
+            (eval:error cake)
+  ]
 
-@examples[#:eval cross-macro-communication-eval
-          (module the-definition racket
-            (require syntax-parse-example/cross-macro-communication/cross-macro-communication)
-            (define-for-macros shake 54)
-            (provide shake))
-          (module the-use racket
-            (require 'the-definition
-                     syntax-parse-example/cross-macro-communication/cross-macro-communication)
-            (get-macroed shake))
-          (require 'the-use)]
+  This communication works even if the identifiers are defined and used in different files or modules:
 
-The following is the source code for @racket[define-for-macros] and @racket[get-macroed]:
+  @examples[#:eval cross-macro-communication-eval
+            (module the-definition racket
+              (require syntax-parse-example/cross-macro-communication/cross-macro-communication)
+              (define-for-macros shake 54)
+              (provide shake))
+            (module the-use racket
+              (require 'the-definition
+                       syntax-parse-example/cross-macro-communication/cross-macro-communication)
+              (get-macroed shake))
+            (require 'the-use)]
 
-@racketfile{cross-macro-communication.rkt}
+  The following is the source code for @racket[define-for-macros] and @racket[get-macroed]:
 
-In @racket[define-for-macros], the macro simply binds a new
-value at compile time using @racket[define-syntax]. In this
-example @racket[define-for-macros] is mostly synonymous with
-@racket[define-syntax], but it demonstrates that the
-@racket[name] could be changed (to say add a question mark
-at the end), and the given expression can be changed. The
-@racket[get-macroed] form simply takes the compile time value and
-puts it in the run time module. If @racket[name] is used
-outside of a macro then a syntax error is raised.
+  @racketfile{cross-macro-communication.rkt}
+
+  In @racket[define-for-macros], the macro simply binds a new
+  value at compile time using @racket[define-syntax]. In this
+  example @racket[define-for-macros] is mostly synonymous with
+  @racket[define-syntax], but it demonstrates that the
+  @racket[name] could be changed (to say add a question mark
+  at the end), and the given expression can be changed. The
+  @racket[get-macroed] form simply takes the compile time value and
+  puts it in the run time module. If @racket[name] is used
+  outside of a macro then a syntax error is raised.
+}
