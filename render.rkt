@@ -69,11 +69,11 @@
                        (lambda (p)
                          (let ([v (read-line p)])
                            (if (eof-object? v) v (string-append v "\n")))))
-    (define an-stx #'(str* ...))
-    (quasisyntax/loc stx
-      (typeset-code
-        #:context (syntax #,an-stx)
-        (quote str*) ...))]))
+    (with-syntax ((ctx (syntax/loc stx #'file-name)))
+      (syntax/loc stx
+        (typeset-code
+          #:context ctx
+          (quote str*) ...)))]))
 
 (define (tech/guide . text)
   (keyword-apply tech '(#:doc) '((lib "scribblings/guide/guide.scrbl")) text))
