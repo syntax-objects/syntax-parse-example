@@ -54,4 +54,9 @@
   @racket[get-macroed] form simply takes the compile time value and
   puts it in the run time module. If @racket[name] is used
   outside of a macro then a syntax error is raised.
+
+  The point of @racket[#%datum] is to make it seem like a value was part of
+   the source code.
+  See @secref["expand-steps" #:doc '(lib "scribblings/reference/reference.scrbl")]
+   for details.
 }

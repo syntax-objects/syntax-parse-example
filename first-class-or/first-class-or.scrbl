@@ -59,5 +59,12 @@
   @item{
     The pattern @litchar{_:id} matches any @tech/reference{identifier}.
   }
+  @item{
+    The dot notation in @racket[(_ _?a . _?b)] could be
+     @racket[(_ _?a _?b ...)] instead.
+    See @secref["Pairs__Lists__and_Racket_Syntax" #:doc '(lib "scribblings/guide/guide.scrbl")]
+     for intuition about what the dot means, and @secref["stxparse-patterns" #:doc '(lib "syntax/scribblings/syntax.scrbl")]
+     for what it means in a syntax pattern.
+  }
   ]
 }

@@ -1,5 +1,6 @@
 #lang scribble/manual
 @require[
+  syntax-parse-example/render
   (for-label
     racket/base
     scribble/manual
@@ -93,6 +94,93 @@ To create an example named @tt[example-macro-name]:
 ]
 
 })
+
+
+@section{A @racket[syntax-parse] Crash Course}
+
+The @racket[syntax-parse] form is a tool for un-packing data from a
+ @tech/reference{syntax object}.
+It's similar to Racket's @racket[match].
+Since the input to a @tech/guide{macro} is always a syntax object,
+ @racket[syntax-parse] is helpful for writing macros.
+
+A syntax object is a Racket representation of source code.
+For example, @racket[#'(+ 1 2)] is a syntax object that represents the
+ sequence of characters @litchar{(+ 1 2)}, along with the information that
+ the @racket[+] identifier is bound to a function in the @racketmodname[racket/base]
+ library.
+
+A macro is a compile-time function on syntax objects.
+In other words, a macro:
+ (1) is a function,
+ (2) expects a syntax object as input,
+ (3) returns a new syntax object, and
+ (4) runs at compile-time (see @secref["expansion" #:doc '(lib "scribblings/reference/reference.scrbl")]).
+
+Here is a simple macro that expects two arguments and returns its first argument.
+@margin-note{The name @racket[_K] is historic (@hyperlink["http://wiki.c2.com/?EssAndKayCombinators"]{link}) and pretentious, enjoy.}
+
+@examples[#:eval (make-base-eval)
+(require (for-syntax racket/base))
+(define-syntax (K args-stx)
+  (define args (syntax-e args-stx))
+  (if (= (length args) 3)
+    (cadr args)
+    (raise-argument-error
+      'K
+      "syntax object containing a list with 3 elements"
+      args-stx)))
+(K 1 2)
+(eval:error (K 1))
+(eval:error (K 1 2 3))
+]
+
+Here is the same macro, defined using @racket[syntax-parse] instead of the low-level
+ @racket[syntax-e] and @racket[cadr] functions:
+
+@examples[#:eval (make-base-eval)
+(require (for-syntax racket/base syntax/parse))
+(define-syntax (K args-stx)
+  (syntax-parse args-stx
+   [(_ ?arg0 ?arg1)
+    #'?arg0]))
+(K 1 2)
+(eval:error (K 1))
+(eval:error (K 1 2 3))
+]
+
+I don't expect that all this makes sense so far.
+Try running and modifying these examples.
+Try reading the documentation for @racket[define-syntax] and @racket[syntax-e]
+ and @racket[syntax-parse] and @racket[syntax] (aka @litchar{#'}).
+
+But the last thing to point out is that @racket[(_ _?arg0 _?arg1)] is a
+ @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{syntax pattern}.
+@itemlist[
+@item{
+  the parentheses say this pattern matches a (special kind of) list,
+}
+@item{
+  the underscore (@litchar{_}) means the first element of the list can be anything,
+}
+@item{
+  the name @racket[_?arg0] means the second element of the list can be anything
+   and gets bound to the @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{pattern variable}
+   @racket[_?arg0],
+}
+@item{
+  the name @racket[_?arg1] binds the third element to another pattern variable,
+}
+@item{
+  and if the list has more or fewer elements the pattern does not match.
+}
+]
+
+A pattern variable is a special kind of variable; it can only be referenced inside
+ a new syntax object.
+The name @racket[_?arg0] starts with a @litchar{?} to help me remember that
+ it is the name of a pattern variable.
+
 
 @; =============================================================================
 @include-section{index.scrbl}
