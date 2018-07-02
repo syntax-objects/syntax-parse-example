@@ -82,17 +82,27 @@
   @itemlist[#:style 'ordered
   @item{
     The @racket[begin-for-syntax] defines two syntax classes (see @secref["Syntax_Classes" #:doc '(lib "syntax/scribblings/syntax.scrbl")]).
-    The first syntax class, @racket[arg-spec], captures arguments with an optional contract annotation.
-    The second, @racket[doc-spec], captures docstrings.
+    The first syntax class, @racket[_arg-spec], captures arguments with an optional contract annotation.
+    The second, @racket[_doc-spec], captures docstrings.
   }
   @item{
     The large @racket[~or] pattern captures the required-and-optional stuff that
-     @racket[def] accepts---in particular, the docstring, the @racket[#:test] test cases,
+     @racket[def] accepts: the docstring, the @racket[#:test] test cases,
      the @racket[#:pre] pre-conditions, and the @racket[#:post] post-conditions.
   }
   @item{
     The four @racket[#:with] clauses build syntax objects that run unit tests
      and/or checks.
+  }
+  @item{
+    The syntax object made from the @racket[#:test] clause creates a
+     post-submodule @racket[(module+ test ....)] and uses @racket[parameterize]
+     to capture everything that the tests print to @racket[current-output-port].
+  }
+  @item{
+    The examples in the docs for the @racket[~optional] pattern help explain
+     (1) why @racket[#'#f] can be a useful @racket[#:default] and (2) when it is
+     necessary to specify the ellipses depth in a @racket[#:default], as in @racket[(_check-pre* 1)].
   }
   ]
 
@@ -107,7 +117,7 @@
      cases are missing.
   }
   @item{
-    The @racket[doc-spec] syntax class could be extended to accept Scribble, or
+    The @racket[_doc-spec] syntax class could be extended to accept Scribble, or
      another kind of docstring syntax.
   }
   @item{
