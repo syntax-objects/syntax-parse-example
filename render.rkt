@@ -50,9 +50,6 @@
     (syntax/loc stx
       (#%module-begin id values () . body))]))
 
-(begin-for-syntax
-  (define-runtime-path here "."))
-
 (define-syntax (racketfile stx)
   (syntax-parse stx
    [(_ file-name:str)
