@@ -16,7 +16,7 @@ Source code: @url[GITHUB-URL]
   This package is a collection of useful and/or illustrative macros written
   using the @racketmodname[syntax/parse] library.
 
-  @Secref{sec:reference} documents the @racketmodname[syntax-parse-example] language.
+  The @secref{sec:reference} section documents the @racketmodname[syntax-parse-example] language.
 }
 
 
@@ -31,8 +31,8 @@ Two options:
 }
 @item{@(let ([example-macro-name @tt{big-mac}]) @list{
   The source code for each macro is in a top-level folder at @url[GITHUB-URL].
-  For example, the source for a macro named @|example-macro-name| would be in a
-  folder named @|example-macro-name| at @url[GITHUB-URL].
+  For example, the source for a macro named @|example-macro-name| would be in
+  the folder @tt{@|GITHUB-URL|/@|example-macro-name|}.
 })}
 ]
 
@@ -100,7 +100,7 @@ To create an example named @tt[example-macro-name]:
 
 The @racket[syntax-parse] form is a tool for un-packing data from a
  @tech/reference{syntax object}.
-It's similar to Racket's @racket[match].
+It is similar to Racket's @racket[match].
 Since the input to a @tech/guide{macro} is always a syntax object,
  @racket[syntax-parse] is helpful for writing macros.
 
@@ -118,6 +118,7 @@ In other words, a macro:
  (4) runs at compile-time (see @secref["expansion" #:doc '(lib "scribblings/reference/reference.scrbl")]).
 
 Here is a simple macro that expects two arguments and returns its first argument.
+Note that when the expander finds a macro application, it invokes the macro with a syntax object representing the whole application (see also: @secref["macro-transformers" #:doc '(lib "scribblings/guide/guide.scrbl")]).
 @margin-note{The name @racket[_K] is historic (@hyperlink["http://wiki.c2.com/?EssAndKayCombinators"]{link}) and pretentious, enjoy.}
 
 @examples[#:eval (make-base-eval)
@@ -178,15 +179,14 @@ But the last thing to point out is that @racket[(_ _?arg0 _?arg1)] is a
 
 A pattern variable is a special kind of variable; it can only be referenced inside
  a new syntax object.
-The name @racket[_?arg0] starts with a @litchar{?} to help me remember that
- it is the name of a pattern variable.
+The name @racket[_?arg0] starts with a @litchar{?} as a style choice --- it helps me remember that it is the name of a pattern variable.
 
 
 @; =============================================================================
 @include-section{index.scrbl}
 @; =============================================================================
 
-@section[#:tag "sec:reference"]{Reference}
+@section[#:tag "sec:reference"]{Example-Formatting Tools}
 
 The @racketmodname[syntax-parse-example] language is a small language for
  documenting example macros. It:
