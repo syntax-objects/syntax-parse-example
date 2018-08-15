@@ -1,6 +1,7 @@
 #lang typed/racket/base
 (module+ test
   (require typed/rackunit
+           syntax/macro-testing
            (rename-in syntax-parse-example/struct-list/struct-list
                       [struct-list struct]))
 
@@ -39,5 +40,8 @@
   (check-pred list? line)
   (check-equal? (cadr origin) (cadr origin))
   (check-equal? origin (tetra-center line))
+
+  (check-exn #rx"struct name and #:type-name must be different"
+             (lambda () (convert-compile-time-error (struct Foo () #:type-name Foo))))
 
 )
