@@ -17,6 +17,7 @@
 @; =============================================================================
 
 @include-example{first-class-or}
+@include-example{optional-assert}
 @include-example{cross-macro-communication}
 @include-example{let-star}
 @include-example{def}
