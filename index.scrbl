@@ -26,3 +26,4 @@
 @include-example{define-datum-literal-set}
 @include-example{rec-contract}
 @include-example{struct-list}
+@include-example{syntax-class-contract}
