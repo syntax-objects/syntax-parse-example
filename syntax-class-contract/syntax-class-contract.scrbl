@@ -42,9 +42,11 @@
     (eval:error (add-hello 'not-string))
   ]
 
+  Implementation:
+
   @racketfile{syntax-class-contract.rkt}
 
-  Special thanks to Michael Ballanytne for developing this macro tool.
+  Special thanks to Michael Ballantyne for developing this macro tool.
 
   Challenge: try making a kind of @racket[contract-out] that can attach
    contracts to macros.
