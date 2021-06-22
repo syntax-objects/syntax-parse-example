@@ -96,6 +96,30 @@ To create an example named @tt[example-macro-name]:
 })
 
 
+@section{Tutorials}
+
+Where to learn about @racket[syntax-parse]?
+
+@itemlist[
+@item{
+  Official documentation, @emph{Syntax: Meta-Programming Helpers}.
+  @hyperlink["https://docs.racket-lang.org/syntax/index.html"]{docs.racket-lang.org/syntax/index.html}
+}
+@item{
+  @emph{Mythical Macros}.
+  @hyperlink["https://soegaard.github.io/mythical-macros/"]{soegaard.github.io/mythical-macros}
+}
+@item{
+  @emph{Macros and Languages in Racket}.
+  @hyperlink["http://rmculpepper.github.io/malr/index.html"]{rmculpepper.github.io/malr/index.html}
+}
+]
+
+The @hyperlink["https://www.greghendershott.com/fear-of-macros/"]{Fear of
+Macros} tutorial is also very good, but was written before the age of syntax
+parse.
+
+
 @section{A @racket[syntax-parse] Crash Course}
 
 The @racket[syntax-parse] form is a tool for un-packing data from a
