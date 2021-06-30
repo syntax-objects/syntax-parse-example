@@ -28,18 +28,7 @@
             (eval:error cake)
   ]
 
-  This communication works even if the identifiers are defined and used in different files or modules:
-
-  @examples[#:eval cross-macro-communication-eval
-            (module the-definition racket
-              (require syntax-parse-example/cross-macro-communication/cross-macro-communication)
-              (define-for-macros shake 54)
-              (provide shake))
-            (module the-use racket
-              (require 'the-definition
-                       syntax-parse-example/cross-macro-communication/cross-macro-communication)
-              (get-macroed shake))
-            (require 'the-use)]
+  This communication works even if the identifiers are defined and used in different files or modules.
 
   The following is the source code for @racket[define-for-macros] and @racket[get-macroed]:
 
