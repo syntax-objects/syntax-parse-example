@@ -27,14 +27,14 @@
   }
   ]
 
-@defform[(def (literal-id arg-spec ...)
+@defform[(def (id argspec ...)
            doc-string
            testcases
            optional-pre-post ...
            body ...+)
            #:grammar
-           ([argspec symbol?
-                     (code:line (symbol? : contract?))]
+           ([argspec arg-id
+                     (code:line (arg-id : contract?))]
             [testcases (code:line #:tests [test ...])]
             [test (code:line (boolean-expr ==> result-expr))]
             [optional-pre-post (code:line #:pre [(pre-comparison-fn failure-doc) ...])
@@ -44,7 +44,9 @@
                         [pre-comparison-fn (-> any/c? ... boolean?)]
                         [post-comparison-fn (-> any/c? boolean?)]
                         [failure-doc string?]
-                        [doc-string string?])
+                        [doc-string string?]
+;                        [arg-id id]
+                        )
            ]{
 
 The @racket{pre-comparison-fn} is applied to the list of function
