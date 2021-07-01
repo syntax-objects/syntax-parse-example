@@ -1,6 +1,7 @@
 #lang syntax-parse-example
 @require[
-  (for-label racket/base syntax/parse syntax-parse-example/def/def)]
+  (for-label racket/base syntax/parse syntax-parse-example/def/def
+             (only-in racket/contract -> any/c))]
 
 @(define def-eval
    (make-base-eval '(require syntax-parse-example/def/def)))
@@ -40,23 +41,23 @@
             [optional-pre-post (code:line #:pre [(pre-comparison-fn failure-doc) ...])
                                (code:line #:post [(post-comparison-fn failure-doc) ...])]
            )
-           #:contracts ([literal-id symbol?]
-                        [pre-comparison-fn (-> any/c? ... boolean?)]
-                        [post-comparison-fn (-> any/c? boolean?)]
+           #:contracts ([arg-id symbol?]
+                        [pre-comparison-fn (-> any/c ... boolean?)]
+                        [post-comparison-fn (-> any/c boolean?)]
                         [failure-doc string?]
                         [doc-string string?]
 ;                        [arg-id id]
                         )
            ]{
 
-The @racket{pre-comparison-fn} is applied to the list of function
+The @racket[pre-comparison-fn] is applied to the list of function
 arguments and should return true if the preconditions are
-satisfied. The @racket{post-comparison-fn} is applied to the result to
+satisfied. The @racket[post-comparison-fn] is applied to the result to
 verify the post-conditions.
 
-The expansion of @racket{def} must occur inside a module because it
-adds @code{(module+ test)} for the @racket{#:test} code. Ordinarily
-@racket{def} will be used inside a file, so it will automatically be
+The expansion of @racket[def] must occur inside a module (rather than a REPL) because it
+adds @racket[(module+ test)] for the @racket[#:test] code. Ordinarily
+@racket[def] will be used inside a file, so it will automatically be
 inside a module.
 
   @examples[#:eval def-eval
