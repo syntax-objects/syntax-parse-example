@@ -103,7 +103,7 @@ Where to learn about @racket[syntax-parse]?
 @itemlist[
 @item{
  @hyperlink["https://school.racket-lang.org/2019/plan/index.html"]{How
- to Design Languages} track of @emp{Racket School 2019}. 
+ to Design Languages} track of @emph{Racket School 2019}. 
  Note especially the Tuesday classes. This is a compact introduction
  to fundamental use of macros with lots of examples posed as
  exercises. 
