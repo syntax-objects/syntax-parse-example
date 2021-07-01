@@ -102,8 +102,22 @@ Where to learn about @racket[syntax-parse]?
 
 @itemlist[
 @item{
+ @hyperlink["https://school.racket-lang.org/2019/plan/index.html"]{How
+ to Design Languages} track of @emp{Racket School 2019}. 
+ Note especially the Tuesday classes. This is a compact introduction
+ to fundamental use of macros with lots of examples posed as
+ exercises. 
+}
+@item{
   Official documentation, @emph{Syntax: Meta-Programming Helpers}.
   @hyperlink["https://docs.racket-lang.org/syntax/index.html"]{docs.racket-lang.org/syntax/index.html}
+  The
+  @hyperlink["https://docs.racket-lang.org/syntax/stxparse-intro.html"]{basic
+  examples in Section 1.1} and more complex ideas in
+  @hyperlink["https://docs.racket-lang.org/syntax/stxparse-examples.html"]{Section
+  1.2} (for example
+  @hyperlink["https://docs.racket-lang.org/syntax/Optional_Keyword_Arguments.html"]{1.2.2
+  "Optional Keyword Arguments"}) are a great way to get started. 
 }
 @item{
   @emph{Mythical Macros}.
@@ -112,13 +126,16 @@ Where to learn about @racket[syntax-parse]?
 @item{
   @emph{Macros and Languages in Racket}.
   @hyperlink["http://rmculpepper.github.io/malr/index.html"]{rmculpepper.github.io/malr/index.html}
+  An unfinished manuscript from 2016 with a great "Basic Macrology"
+  section. Recommended as a first introduction to macros. Demonstrates
+  how to write "minimal macros" which defer evaluation of expressions
+  but then call run-time functions to do most of their work. 
 }
 ]
 
 The @hyperlink["https://www.greghendershott.com/fear-of-macros/"]{Fear of
 Macros} tutorial is also very good, but was written before the age of syntax
 parse.
-
 
 @section{A @racket[syntax-parse] Crash Course}
 
