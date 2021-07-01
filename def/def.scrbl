@@ -11,9 +11,53 @@
 
 @defmodule[syntax-parse-example/def/def]{}
 
-@defform[(def (id arg-spec ...)
-           doc-contract-tests ...
-           expr ...)]{
+  The @racket[def] macro is similar to @racket[define] but:
+  @itemlist[
+  @item{
+    requires a docstring
+  }
+  @item{
+    requires test cases;
+  }
+  @item{
+    optionally accepts contract annotations on its arguments; and
+  }
+  @item{
+    optionally accepts pre- and post- conditions.
+  }
+  ]
+
+@defform[(def (id argspec ...)
+           doc-string
+           testcases
+           optional-pre-post ...
+           body ...+)
+           #:grammar
+           ([argspec arg-id
+                     (code:line (arg-id : contract?))]
+            [testcases (code:line #:tests [test ...])]
+            [test (code:line (boolean-expr ==> result-expr))]
+            [optional-pre-post (code:line #:pre [(pre-comparison-fn failure-doc) ...])
+                               (code:line #:post [(post-comparison-fn failure-doc) ...])]
+           )
+           #:contracts ([literal-id symbol?]
+                        [pre-comparison-fn (-> any/c? ... boolean?)]
+                        [post-comparison-fn (-> any/c? boolean?)]
+                        [failure-doc string?]
+                        [doc-string string?]
+;                        [arg-id id]
+                        )
+           ]{
+
+The @racket{pre-comparison-fn} is applied to the list of function
+arguments and should return true if the preconditions are
+satisfied. The @racket{post-comparison-fn} is applied to the result to
+verify the post-conditions.
+
+The expansion of @racket{def} must occur inside a module because it
+adds @code{(module+ test)} for the @racket{#:test} code. Ordinarily
+@racket{def} will be used inside a file, so it will automatically be
+inside a module.
 
   @examples[#:eval def-eval
    (module snoc racket/base
@@ -30,21 +74,6 @@
    (snoc '(1 2) 3)
   ]
 
-  The @racket[def] macro is similar to @racket[define] but:
-  @itemlist[
-  @item{
-    requires a docstring
-  }
-  @item{
-    requires test cases;
-  }
-  @item{
-    optionally accepts contract annotations on its arguments; and
-  }
-  @item{
-    optionally accepts pre- and post- conditions.
-  }
-  ]
 
   @examples[#:eval def-eval
     (module gcd racket/base
