@@ -35,11 +35,9 @@
               (require syntax-parse-example/cross-macro-communication/cross-macro-communication)
               (define-for-macros shake 54)
               (provide shake))
-            (module the-use racket
-              (require 'the-definition
-                       syntax-parse-example/cross-macro-communication/cross-macro-communication)
-              (get-macroed shake))
-            (require 'the-use)]
+	    (require 'the-definition
+                     syntax-parse-example/cross-macro-communication/cross-macro-communication)
+            (get-macroed shake)]
 
   The following is the source code for @racket[define-for-macros] and @racket[get-macroed]:
 
