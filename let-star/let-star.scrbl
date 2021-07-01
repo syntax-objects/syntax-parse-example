@@ -46,13 +46,13 @@
   ]
 
   @examples[#:eval let-star-eval
-   (eval:error (let* 1))
+   (eval:error (let-star 1))
 
-   (eval:error (let* ([a 1])))
+   (eval:error (let-star ([a 1])))
 
-   (let* ([a 1]
-          [b (+ a 1)]
-          [c (+ b 1)])
+   (let-star ([a 1]
+              [b (+ a 1)]
+              [c (+ b 1)])
      c)
   ]
 }
