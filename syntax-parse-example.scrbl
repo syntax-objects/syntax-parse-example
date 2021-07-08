@@ -134,8 +134,9 @@ Where to learn about @racket[syntax-parse]?
 ]
 
 The @hyperlink["https://www.greghendershott.com/fear-of-macros/"]{Fear of
-Macros} tutorial is also very good, but was written before the age of syntax
-parse.
+Macros} tutorial is a great resource for basic macro engineering (though, not
+syntax-parse in particular).
+
 
 @section{A @racket[syntax-parse] Crash Course}
 
