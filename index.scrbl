@@ -27,3 +27,4 @@
 @include-example{rec-contract}
 @include-example{struct-list}
 @include-example{syntax-class-contract}
+@include-example{except-in-quiet}
