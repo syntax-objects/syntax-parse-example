@@ -1,8 +1,13 @@
 #lang scribble/manual
 
+@require[
+  (for-label racket/base #;syntax-parse-example/dot-underscore/dot-underscore)]
+
 @title{@tt{dot-underscore}}
 
 @; =============================================================================
+
+@defmodule[syntax-parse-example/dot-underscore/dot-underscore]{}
 
 The @tt{dot-underscore} example shows how to:
 @itemlist[
