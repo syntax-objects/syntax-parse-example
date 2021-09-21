@@ -42,3 +42,4 @@
 @include-example{pyret-for}
 @include-example{flaggable-app}
 @include-example{js-dict}
+@include-example{define-freevar}
