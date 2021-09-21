@@ -43,3 +43,4 @@
 @include-example{flaggable-app}
 @include-example{js-dict}
 @include-example{define-freevar}
+@include-example{fnarg}
