@@ -45,3 +45,4 @@
 @include-example{define-freevar}
 @include-example{fnarg}
 @include-example{fresh-variable}
+@include-example{define-with-datum}

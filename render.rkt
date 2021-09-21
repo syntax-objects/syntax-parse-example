@@ -23,6 +23,10 @@
   ;;  where the `....` is the module path for The Racket Reference
   ;; (If the name is too long for you, `rename-in` to something shorter.)
 
+  tech/syntax
+  ;; Usage: @tech/syntax{text}
+  ;;  where `text` refers to a definition from the `syntax` lib.
+
   racketfile
   ;; Usage: @racketfile{filename}
   ;;  where `filename` is a string representing a Racket file
@@ -87,6 +91,9 @@
 
 (define (tech/reference . text)
   (keyword-apply tech '(#:doc) '((lib "scribblings/reference/reference.scrbl")) text))
+
+(define (tech/syntax . text)
+  (keyword-apply tech '(#:doc) '((lib "syntax/scribblings/syntax.scrbl")) text))
 
 (define (github-user usr)
   (hyperlink (format "https://github.com/~a" usr) (tt usr)))
