@@ -197,7 +197,7 @@ Try running and modifying these examples.
 Try reading the documentation for @racket[define-syntax] and @racket[syntax-e]
  and @racket[syntax-parse] and @racket[syntax] (aka @litchar{#'}).
 
-But the last thing to point out is that @racket[(_ _?arg0 _?arg1)] is a
+The last thing to point out is that @racket[(_ _?arg0 _?arg1)] is a
  @tech[#:doc '(lib "syntax/scribblings/syntax.scrbl")]{syntax pattern}.
 @itemlist[
 @item{
