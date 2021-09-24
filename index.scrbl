@@ -31,6 +31,7 @@
 @include-example{multi-check-true}
 @include-example{define-datum-literal-set}
 @include-example{rec-contract}
+@include-example{log-once}
 @include-example{marc-matcher}
 @include-example{struct-list}
 @include-example{syntax-class-contract}
