@@ -1,7 +1,7 @@
-#lang scribble/manual
+#lang syntax-parse-example
 
 @require[
-  (for-label racket/base #;syntax-parse-example/dot-underscore/dot-underscore)]
+  (for-label racket/base )]
 
 @title{@tt{dot-underscore}}
 @stxbee2021["soegaard" 15]
