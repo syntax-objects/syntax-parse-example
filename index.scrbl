@@ -17,6 +17,7 @@
 @; =============================================================================
 
 @include-example{displaylns}
+@include-example{defines}
 @include-example{first-class-or}
 @include-example{optional-assert}
 @include-example{make-variable}
