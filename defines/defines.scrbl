@@ -12,7 +12,8 @@
 
 @defmodule[syntax-parse-example/defines/defines]{}
 
-@defform[(defines expr ...)]{
+@defform[(defines [id-spec expr] ...)
+         #:grammar ([id-spec id (id ...)])]{
   Make a sequence of definitions --- similar to @racket[let*].
 
   Definitions are automatically dispatched either to @racket[define] or @racket[define-values]
