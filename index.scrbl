@@ -36,3 +36,6 @@
 @include-example{dot-underscore}
 @include-example{try-catch-finally}
 @include-example{kw-ctc}
+@include-example{pyret-for}
+@include-example{flaggable-app}
+@include-example{js-dict}
