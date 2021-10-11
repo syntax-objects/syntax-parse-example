@@ -35,3 +35,4 @@
 @include-example{except-in-quiet}
 @include-example{dot-underscore}
 @include-example{try-catch-finally}
+@include-example{kw-ctc}
