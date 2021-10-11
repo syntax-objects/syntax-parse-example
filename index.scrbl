@@ -40,6 +40,7 @@
 @include-example{try-catch-finally}
 @include-example{kw-ctc}
 @include-example{pyret-for}
+@include-example{hierarchical-cmdline}
 @include-example{flaggable-app}
 @include-example{js-dict}
 @include-example{define-freevar}
