@@ -21,6 +21,7 @@
 @include-example{cross-macro-communication}
 @include-example{let-star}
 @include-example{while-break}
+@include-example{define-extend}
 @include-example{def}
 @include-example{conditional-require}
 @include-example{multi-check-true}
