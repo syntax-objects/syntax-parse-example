@@ -29,3 +29,4 @@
 @include-example{syntax-class-contract}
 @include-example{except-in-quiet}
 @include-example{dot-underscore}
+@include-example{define-extend}
