@@ -87,7 +87,7 @@
   (hyperlink (format "https://github.com/~a" usr) (tt usr)))
 
 (define (github-issue owner repo item)
-  (hyperlink (format "https://github.com/~a/~a/issue/~a" owner repo item) (tt "#" item)))
+  (hyperlink (format "https://github.com/~a/~a/issues/~a" owner repo item) (tt "#" item)))
 
 (define (stxbee2021-issue item)
   (github-issue "syntax-objects" "Summer2021" item))
