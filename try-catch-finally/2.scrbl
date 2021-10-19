@@ -54,7 +54,7 @@
 
   @itemlist[
     @item{
-      @emph{Changes in supporting runtime function definitions}
+      @emph{Changes in supporting runtime function definitions:}
       @itemlist[
         @item{
           The @racket[try] macro does not need a supporting @tt{with-catch} function
@@ -69,7 +69,7 @@
           Discord), to accomplish the same without mutable state.
         }]}
     @item{
-      @emph{Changes in supporting runtime function definitions}
+      @emph{Changes in the compile-time syntax transformation definitions:}
       @itemlist[
         @item{
           The @racket[catch] and @racket[finally] literals use a compile-time
