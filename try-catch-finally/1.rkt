@@ -1,20 +1,47 @@
 #lang racket/base
 
-(provide try)
+(provide try catch catch/match finally)
 
 (require (for-syntax racket/base)
+         racket/match
          syntax/parse/define)
 
 (begin-for-syntax
+  (define ((only-in-try name) stx)
+    (raise-syntax-error name "not allowed except in try" stx)))
+
+(define-syntax catch (only-in-try 'catch))
+(define-syntax catch/match (only-in-try 'catch/match))
+(define-syntax finally (only-in-try 'finally))
+
+(begin-for-syntax
+  (define-syntax-class try-body
+    #:literals (catch catch/match finally)
+    (pattern {~and :expr {~not {~or (catch . _) (catch/match . _) (finally . _)}}}))
+
   (define-syntax-class catch-clause
-    #:attributes ((pred 1) (name 1) (body 2))
-    #:datum-literals (catch)
-    (pattern (catch ([(pred:expr name:id) body:expr ...+] ...))))
+    #:attributes ((handlers 1))
+    #:literals (catch)
+    (pattern (catch [pred:expr name:id body:expr ...+] ...)
+             #:with (handlers ...) #'([pred (λ (name) body ...)] ...)))
+
+  ;; this one's for you, notjack
+  (define-syntax-class catch-match-clause
+    #:attributes (handler)
+    #:literals (catch/match)
+    (pattern (catch/match [clause:expr body:expr ...+] ...)
+             #:with (match-clauses ...) #'([clause body ...] ...)
+             #:with handler #'[(λ (_) #t) ;; catch 'em all
+                               (match-lambda
+                                 match-clauses ...
+                                 ;; rethrow as last resort
+                                 [e (raise e)])]))
 
   (define-syntax-class finally-clause
-    #:attributes ((body 1))
-    #:datum-literals (finally)
-    (pattern (finally body:expr ...+))))
+    #:attributes (handler)
+    #:literals (finally)
+    (pattern (finally body:expr ...+)
+             #:with handler #'(λ () body ...))))
 
 ;; Calls value-thunk, then post-thunk, with post-thunk guaranteed to be run
 ;; even if execution exits value-thunk through an exception or continuation
@@ -28,12 +55,14 @@
     (λ () (dynamic-wind void value-thunk post-thunk))))
 
 (define-syntax-parser try
-  [(_ {~and body:expr {~not _:catch-clause} {~not _:finally-clause}} ...+
+  [(_ body:try-body ...+
       {~optional c:catch-clause}
+      {~optional m:catch-match-clause}
       {~optional f:finally-clause})
    #'(call-with-try-finally
        (λ ()
-         (with-handlers ((~? (~@ [c.pred (λ (c.name) c.body ...)] ...)))
+         (with-handlers ((~? (~@ c.handlers ...))
+                         (~? m.handler))
            body ...))
-       (~? (λ () f.body ...) void))])
+       (~? f.handler void))])
 
