@@ -32,6 +32,9 @@
   stxbee2021
   ;; Usage @stxbee2021[user issue]
   ;; Renders a thank-you note for a Syntax Bee 2021 submission
+
+  adapted-from
+  ;; Usage @adapted-from[#:what [kind #f] name url]
 )
 
 (require
@@ -103,4 +106,15 @@
           (stxbee2021-issue (~a issue))
           ") during the 2021 Syntax Parse Bee."
           )))
+
+(define (adapted-from #:what [what-type #f] name url)
+  (define-values [what-pre what-post]
+    (if what-type
+      (values " the " (string-append " " what-type))
+      (values " " "")))
+  (nested-inset
+    (emph "Adapted from"
+          what-pre
+          (hyperlink url name)
+          what-post ".")))
 
