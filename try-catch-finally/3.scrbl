@@ -7,6 +7,8 @@
    (make-base-eval '(require racket/port racket/string syntax-parse-example/try-catch-finally/3)))
 
 
+@title{@racket[try], @racket[try-with], @racket[try-with*]}
+
 @defmodule[syntax-parse-example/try-catch-finally/3]{}
 @stxbee2021["eutro" 12]
 @adapted-from[#:what "package" @tt{try-catch-match} "https://docs.racket-lang.org/try-catch-match/index.html"]
@@ -65,6 +67,8 @@
   @defidform[finally])]{
   These identifiers may only appear within a @racket[try] form.
 }
+
+Implementation:
 
 @racketfile{3.rkt}
 

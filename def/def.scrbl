@@ -136,8 +136,6 @@ inside a module.
   }
   ]
 
-  The @racket[def] macro:
-
   @racketfile{def.rkt}
 
   Notes:

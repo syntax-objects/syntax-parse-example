@@ -1,6 +1,6 @@
 #lang syntax-parse-example
 @require[
-  (for-label (except-in racket/base #%app) syntax/parse syntax-parse-example/flaggable-app/flaggable-app)]
+  (for-label (rename-in racket/base [#%app racket:#%app]) (except-in racket/base #%app) syntax/parse syntax-parse-example/flaggable-app/flaggable-app)]
 
 @(define plain-eval
    (make-base-eval '(require racket/string)))

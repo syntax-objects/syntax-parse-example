@@ -46,7 +46,7 @@
     (map first-class-or '(9 #false 3) '(8 #false #false))
   ]
 
-  The macro:
+  Implementation:
 
   @racketfile{first-class-or.rkt}
 

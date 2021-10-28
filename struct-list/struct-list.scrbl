@@ -13,7 +13,7 @@
 
 @defform[(struct-list expr ...)]{
   The @racket[struct-list] macro has similar syntax as Typed Racket's @racket[struct] form, but creates a new datatype backed by a @racket[list] instead of an actual struct.
-  The only cosmetic difference is that type @racket[#:type-name] keyword is required, and must supply a name that is different from the struct name.
+  The @racket[#:type-name] keyword is required and must supply a name that is different from the struct name.
 
   @examples[#:eval struct-list-eval
    (struct-list foo ([a : String] [b : String]) #:type-name Foo)

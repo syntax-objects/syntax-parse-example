@@ -39,7 +39,7 @@
                        #:defaults ([target-log-count #'1]))
             (~optional (~seq #:when condition:expr) #:name "#:when keyword")
             (~optional (~seq #:message message:str) #:name "#:message keyword")
-            (~optional (~seq #:newline newline:boolean) #:name "#:newline keyword")) ...
+            (~optional (~seq #:newline newln:boolean) #:name "#:newln keyword")) ...
       exprs* ...+)
    #:with logged (syntax-local-lift-expression #'#f)
    #:with run-count (syntax-local-lift-expression #'0)
@@ -58,5 +58,5 @@
           (when (and (~? condition)
                      (should-run?!))
             (~? (display message))
-            (log-defs (~? (~@ #:newline newline)) exprs* ...)
+            (log-defs (~? (~@ #:newline newln)) exprs* ...)
             (stop-logging?!)))])

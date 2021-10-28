@@ -25,7 +25,7 @@
   If you give it a syntax class value, it returns a contract that accepts a syntax
    object @racket[#'(_A _B)] where @racket[_A] is anything and @racket[_B]
    matches the syntax class.
-  The contract can be attached to a normal macro --- with a little ingenuity.
+  The contract can be attached to a normal macro through the @racket[contract] form.
 
   @examples[#:eval syntax-class-contract-eval
     (define-syntax add-hello

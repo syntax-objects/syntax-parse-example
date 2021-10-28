@@ -18,12 +18,12 @@
 
 @include-example{displaylns}
 @include-example{defines}
+@include-example{let-star}
 @include-example{first-class-or}
 @include-example{optional-assert}
 @include-example{make-variable}
 @include-example{define-curry}
 @include-example{cross-macro-communication}
-@include-example{let-star}
 @include-example{while-break}
 @include-example{define-extend}
 @include-example{def}

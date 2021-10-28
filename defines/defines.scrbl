@@ -17,7 +17,7 @@
   Make a sequence of definitions --- similar to @racket[let*].
 
   Definitions are automatically dispatched either to @racket[define] or @racket[define-values]
-  depending on the manner in which identifiers are supplied.
+  as appropriate.
 
   @examples[#:eval defines-eval
     (defines

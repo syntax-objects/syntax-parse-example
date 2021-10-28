@@ -1,6 +1,6 @@
 #lang syntax-parse-example
 @require[
-  (for-label racket/base syntax/parse syntax-parse-example/except-in-quiet/except-in-quiet)]
+  (for-label racket/base racket/require-transform syntax/parse syntax-parse-example/except-in-quiet/except-in-quiet)]
 
 @(define except-in-quiet-eval
    (make-base-eval '(require syntax-parse-example/except-in-quiet/except-in-quiet)))

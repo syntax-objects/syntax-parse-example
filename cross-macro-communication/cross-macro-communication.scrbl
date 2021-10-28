@@ -16,11 +16,10 @@
  @defform[(define-for-macros id expr)]
  @defform[(get-macroed id)]
 )]{
-  The @racket[define-for-macros] and @racket[get-macroed]
-  demonstrate the use of @racket[syntax-local-value] when
-  communicating information across macros. Anything defined
-  with @racket[define-for-macros] can be accessed (at
-  compile/macro expansion time) by @racket[get-macroed].
+  The @racket[define-for-macros] and @racket[get-macroed] forms use
+  @racket[syntax-local-value] to communicate information across macros.
+  Anything defined with @racket[define-for-macros] can be accessed (at
+  macro expansion time) by @racket[get-macroed].
 
   @examples[#:eval cross-macro-communication-eval
             (define-for-macros cake 42)
@@ -39,11 +38,11 @@
                      syntax-parse-example/cross-macro-communication/cross-macro-communication)
             (get-macroed shake)]
 
-  The following is the source code for @racket[define-for-macros] and @racket[get-macroed]:
+  Implementation:
 
   @racketfile{cross-macro-communication.rkt}
 
-  In @racket[define-for-macros], the macro simply binds a new
+  @racket[define-for-macros] simply binds a new
   value at compile time using @racket[define-syntax]. In this
   example @racket[define-for-macros] is mostly synonymous with
   @racket[define-syntax], but it demonstrates that the

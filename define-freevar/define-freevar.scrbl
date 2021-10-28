@@ -95,7 +95,6 @@
   Definition form of @racket[with-freevar].
 }
 
-@section{Implementation}
 
 While the idea is straightforward, a direct translation generates a large
 amount of code duplication. In the output of @racket[define/freevar], the only

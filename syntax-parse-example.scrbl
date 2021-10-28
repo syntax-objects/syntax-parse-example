@@ -13,7 +13,7 @@
 Source code: @url[GITHUB-URL]
 
 @defmodulelang[syntax-parse-example]{
-  This package is a collection of useful and/or illustrative macros written
+  This package is a collection of useful and illustrative macros written
   using the @racketmodname[syntax/parse] library.
 
   The @secref{sec:reference} section documents the @racketmodname[syntax-parse-example] language.
@@ -39,7 +39,7 @@ Two options:
 
 @section{How to use the examples in another project}
 
-Three options, ordered from best to worst.
+Three options:
 @itemlist[
 @item{
   Copy/paste the example code into a new file in your project, require that
@@ -59,43 +59,6 @@ Three options, ordered from best to worst.
 ]
 
 
-@section{How to contribute a new example}
-@(let ([example-macro-name "EUGENE"]) @list{
-
-To create an example named @tt[example-macro-name]:
-@itemlist[
-@item{
-  Clone this repository (@hyperlink[GITHUB-URL]{link}).
-}
-@item{
-  Run @exec{raco syntax-parse-example --new @|example-macro-name|} in the
-  top-level folder of the cloned repository.
-  This generates three new files:
-  @itemlist[
-  @item{
-    @tt{@|example-macro-name|/@|example-macro-name|.rkt} (source code)
-  }
-  @item{
-    @tt{@|example-macro-name|/@|example-macro-name|-test.rkt} (tests)
-  }
-  @item{
-    @tt{@|example-macro-name|/@|example-macro-name|-doc.scrbl} (Scribble documentation)
-  }
-  ]
-}
-@item{
-  Fill the holes in the newly-generated files with an implementation,
-   some unit tests,
-   and documentation.
-}
-@item{
-  Run @exec{raco setup syntax-parse-example} to generate the documentation.
-}
-]
-
-})
-
-
 @section{Tutorials}
 
 Where to learn about @racket[syntax-parse]?
@@ -103,8 +66,8 @@ Where to learn about @racket[syntax-parse]?
 @itemlist[
 @item{
  @hyperlink["https://school.racket-lang.org/2019/plan/index.html"]{How
- to Design Languages} track of @emph{Racket School 2019}. 
- Note especially the Tuesday classes. This is a compact introduction
+ to Design Languages} track of @emph{Racket School 2019},
+ especially the Tuesday classes. This is a compact introduction
  to fundamental use of macros with lots of examples posed as
  exercises. 
 }
@@ -140,7 +103,7 @@ syntax-parse in particular).
 
 @section{A @racket[syntax-parse] Crash Course}
 
-The @racket[syntax-parse] form is a tool for un-packing data from a
+The @racket[syntax-parse] form is a tool for unpacking data from a
  @tech/reference{syntax object}.
 It is similar to Racket's @racket[match].
 Since the input to a @tech/guide{macro} is always a syntax object,
@@ -157,16 +120,16 @@ In other words, a macro:
  (1) is a function,
  (2) expects a syntax object as input,
  (3) returns a new syntax object, and
- (4) runs at compile-time (see @secref["expansion" #:doc '(lib "scribblings/reference/reference.scrbl")]).
+ (4) runs at compile-time [@secref["expansion" #:doc '(lib "scribblings/reference/reference.scrbl")]].
 
 Here is a simple macro that expects two arguments and returns its first argument.
-Note that when the expander finds a macro application, it invokes the macro with a syntax object representing the whole application (see also: @secref["macro-transformers" #:doc '(lib "scribblings/guide/guide.scrbl")]).
-@margin-note{The name @racket[_K] is historic (@hyperlink["http://wiki.c2.com/?EssAndKayCombinators"]{link}) and pretentious, enjoy.}
+When the expander finds a macro application @racket[(_K 1 2)], it invokes the macro @racket[_K] with a syntax object @racket[#'(_K 1 2)] representing the whole application [@secref["macro-transformers" #:doc '(lib "scribblings/guide/guide.scrbl")]].
+@margin-note{The name @racket[_K] is @hyperlink["http://wiki.c2.com/?EssAndKayCombinators"]{historic}.}
 
 @examples[#:eval (make-base-eval)
 (require (for-syntax racket/base))
 (define-syntax (K args-stx)
-  (define args (syntax-e args-stx))
+  (define args (syntax-e args-stx)) (code:comment "syntax->list works too")
   (if (= (length args) 3)
     (cadr args)
     (raise-argument-error
@@ -227,6 +190,43 @@ The name @racket[_?arg0] starts with a @litchar{?} as a style choice --- it help
 @; =============================================================================
 @include-section{index.scrbl}
 @; =============================================================================
+
+@section{How to contribute a new example}
+@(let ([example-macro-name "EUGENE"]) @list{
+
+To create an example named @tt[example-macro-name]:
+@itemlist[
+@item{
+  Clone this repository (@hyperlink[GITHUB-URL]{link}).
+}
+@item{
+  Run @exec{raco syntax-parse-example --new @|example-macro-name|} in the
+  top-level folder of the cloned repository.
+  This generates three new files:
+  @itemlist[
+  @item{
+    @tt{@|example-macro-name|/@|example-macro-name|.rkt} (source code)
+  }
+  @item{
+    @tt{@|example-macro-name|/@|example-macro-name|-test.rkt} (tests)
+  }
+  @item{
+    @tt{@|example-macro-name|/@|example-macro-name|-doc.scrbl} (Scribble documentation)
+  }
+  ]
+}
+@item{
+  Fill the holes in the newly-generated files with an implementation,
+   some unit tests,
+   and documentation.
+}
+@item{
+  Run @exec{raco setup syntax-parse-example} to generate the documentation.
+}
+]
+
+})
+
 
 @section[#:tag "sec:reference"]{Example-Formatting Tools}
 

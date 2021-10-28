@@ -1,6 +1,6 @@
 #lang syntax-parse-example
 @require[
-  (for-label racket/base syntax/parse syntax-parse-example/js-dict/js-dict)]
+  (for-label racket/base syntax/parse/define syntax/parse syntax-parse-example/js-dict/js-dict)]
 
 @(define js-dict-eval
    (make-base-eval '(require syntax-parse-example/js-dict/js-dict)))

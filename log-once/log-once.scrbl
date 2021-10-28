@@ -1,6 +1,6 @@
 #lang syntax-parse-example
 @require[
-  (for-label racket/base (only-in racket/math natural?) syntax/parse syntax-parse-example/log-once/log-once)]
+  (for-label racket/base racket/contract (only-in racket/math natural?) syntax/parse syntax-parse-example/log-once/log-once)]
 
 @(define log-once-eval
    (make-base-eval '(require syntax-parse-example/log-once/log-once)))
