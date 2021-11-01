@@ -3,7 +3,7 @@ syntax-parse-example
 [![Build Status](https://travis-ci.org/bennn/syntax-parse-example.svg)](https://travis-ci.org/bennn/syntax-parse-example)
 [![Scribble](https://img.shields.io/badge/Docs-Scribble-blue.svg)](http://docs.racket-lang.org/syntax-parse-example/index.html)
 
-Example macros, written using [`syntax/parse`](http://docs.racket-lang.org/syntax/Parsing_Syntax.html).
+Example macros written using [`syntax/parse`](http://docs.racket-lang.org/syntax/Parsing_Syntax.html).
 
 
 Install
@@ -46,7 +46,7 @@ Except for the `lang/` folder, every folder here contains:
 Contribute
 ---
 
-To contribute a macro names `M`:
+To contribute a macro named `M`:
 
 0. Clone this package (`raco pkg install --clone syntax-parse-example`)
 1. Navigate to the `syntax-parse-example/` folder on your machine
