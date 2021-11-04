@@ -1,8 +1,8 @@
 #lang racket/base
 (module+ test
-  (require rackunit syntax-parse-example/define-with-datum/define-with-datum syntax/datum syntax/macro-testing)
+  (require rackunit syntax-parse-example/define-with-datum+/define-with-datum+ syntax/datum syntax/macro-testing)
 
-  (define/with-datum (x ((y z ...) ...))
+  (define/with-datum+ (x ((y z ...) ...))
     '("X" (("Y1" "Z11" "Z12")
            ("Y2" "Z21"))))
 

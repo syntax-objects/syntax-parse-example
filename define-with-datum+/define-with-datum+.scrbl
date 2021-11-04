@@ -1,18 +1,18 @@
 #lang syntax-parse-example
 @require[
-  (for-label racket/base syntax/parse racket/syntax syntax/datum syntax-parse-example/define-with-datum/define-with-datum)]
+  (for-label racket/base syntax/parse racket/syntax syntax/datum syntax-parse-example/define-with-datum+/define-with-datum+)]
 
 @(define define-with-datum-eval
-   (make-base-eval '(require syntax/datum syntax-parse-example/define-with-datum/define-with-datum)))
+   (make-base-eval '(require syntax/datum syntax-parse-example/define-with-datum+/define-with-datum+)))
 
-@title{@tt{define/with-datum}}
+@title{@tt{define/with-datum+}}
 
 @; =============================================================================
 
-@defmodule[syntax-parse-example/define-with-datum/define-with-datum]{}
+@defmodule[syntax-parse-example/define-with-datum+/define-with-datum+]{}
 @stxbee2021["shhyou" 21]
 
-@defform[(define/with-datum pattern datum-expr)]{
+@defform[(define/with-datum+ pattern datum-expr)]{
 
   Definition form of @racket[with-datum].
   Matches the value result of @racket[datum-expr] and binds the pattern variables
@@ -24,7 +24,7 @@
   and @racket[z] (at ellipsis depth 2) gets bound to a list of lists of strings.
 
   @examples[#:eval define-with-datum-eval
-    (define/with-datum (x ((y z ...) ...))
+    (define/with-datum+ (x ((y z ...) ...))
       '("X" (("Y1" "Z11" "Z12")
              ("Y2" "Z21"))))
     (datum x)
@@ -41,6 +41,6 @@
   computation while retaining appropriate semantical meanings such as binding a
   pattern variable (@racket[#:with]) or performing an imperative action (@racket[#:do]).
 
-  @racketfile{define-with-datum.rkt}
+  @racketfile{define-with-datum+.rkt}
 
 }

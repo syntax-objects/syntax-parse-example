@@ -1,6 +1,6 @@
 #lang racket/base
 
-(provide define/with-datum)
+(provide define/with-datum+)
 
 (require syntax/parse/define
          syntax/datum
@@ -29,8 +29,8 @@ Source:
   Commit SHA: 8e83dc25f7f5767
   Line: 22-59
 |#
-(define-syntax-parse-rule (define/with-datum pattern rhs)
-  #:attr matched-vars (get-match-vars #'define/with-datum
+(define-syntax-parse-rule (define/with-datum+ pattern rhs)
+  #:attr matched-vars (get-match-vars #'define/with-datum+
                                       this-syntax
                                       #'pattern
                                       '())
