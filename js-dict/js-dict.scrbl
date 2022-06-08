@@ -98,9 +98,10 @@ arbitrary match pattern.
 
 @defform[(js-dict construct-spec ...)
          #:grammar ([ccnstruct-spec [key expr]
-                                    (#:merge expr)
+                                    (code:line #:merge expr)
                                     id]
-                    [key (#:expr expr) id])]{
+                    [key (code:line #:expr expr)
+                         id])]{
 
   @examples[#:eval js-dict-eval
     (define d 4)
@@ -122,8 +123,10 @@ arbitrary match pattern.
 @defform[(js-extract (extract-spec ... maybe-rest) obj-expr)
          #:grammar ([extract-spec [key pattern-expr]
                                   id]
-                    [maybe-rest (code:line) #:rest expr]
-                    [key (#:expr expr) id])]{
+                    [maybe-rest (code:line)
+                                (code:line #:rest expr)]
+                    [key (code:line #:expr expr)
+                         id])]{
 
   With the above @racket[_obj], in the following code adds five definitions:
 
