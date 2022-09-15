@@ -87,13 +87,13 @@
           (quote str*) ...)))]))
 
 (define (tech/guide . text)
-  (keyword-apply tech '(#:doc) '((lib "scribblings/guide/guide.scrbl")) text))
+  (apply tech text #:doc '(lib "scribblings/guide/guide.scrbl")))
 
 (define (tech/reference . text)
-  (keyword-apply tech '(#:doc) '((lib "scribblings/reference/reference.scrbl")) text))
+  (apply tech text #:doc '(lib "scribblings/reference/reference.scrbl")))
 
 (define (tech/syntax . text)
-  (keyword-apply tech '(#:doc) '((lib "syntax/scribblings/syntax.scrbl")) text))
+  (apply tech text #:doc '(lib "syntax/scribblings/syntax.scrbl")))
 
 (define (github-user usr)
   (hyperlink (format "https://github.com/~a" usr) (tt usr)))
