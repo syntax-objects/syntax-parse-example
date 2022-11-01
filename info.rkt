@@ -7,3 +7,4 @@
 (define pkg-authors '(ben))
 (define scribblings '(("syntax-parse-example.scrbl" () ("Examples"))))
 (define raco-commands '(("syntax-parse-example" (submod syntax-parse-example/raco main) "macro-management" #f)))
+(define license 'MIT)
