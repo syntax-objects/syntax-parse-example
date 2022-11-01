@@ -23,6 +23,9 @@
     (define (filter/rx rx v*)
       (filter (λ (v) (regexp-match? rx v)) v*))
 
+    (define (<=1 n)
+      (<= 1 n))
+
     (for ((d (in-glob "*/")))
       (cond
        [(compiled-dir? d)
@@ -39,11 +42,11 @@
                         (path->string (file-name-from-path ps))))
         (define scrbl*
           (let ([f* (filter/rx #rx"\\.scrbl$" file*)])
-            (check-equal? (length f*) 1 (format "directory '~a' must contains one Scribble file" d))
+            (check-pred <=1 (length f*) (format "directory '~a' must contain at least one Scribble file" d))
             f*))
         (define test*
           (let ([f* (filter/rx #rx"-test\\.rkt$" file*)])
-            (check-equal? (length f*) 1 (format "directory '~a' must contains one '-test.rkt' file" d))
+            (check-pred <=1 (length f*) (format "directory '~a' must contain at least one '-test.rkt' file" d))
             f*))
         (define scrbl-name (cadr (regexp-match #rx"^([^.]*)\\.scrbl$" (car scrbl*))))
         (define test-name (cadr (regexp-match #rx"^([^.]*)-test\\.rkt$" (car test*))))
